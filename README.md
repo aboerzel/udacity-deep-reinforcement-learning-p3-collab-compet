@@ -1,7 +1,6 @@
 [//]: # (Image References)
 
-[image1]: https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif "Trained Agent"
-[image2]: https://user-images.githubusercontent.com/10624937/42135622-e55fb586-7d12-11e8-8a54-3c31da15a90a.gif "Soccer"
+[image1]: /resources/sample-match.gif
 
 
 # Project 3: Collaboration and Competition
@@ -23,40 +22,89 @@ The task is episodic, and in order to solve the environment, your agents must ge
 
 The environment is considered solved, when the average (over 100 episodes) of those **scores** is at least +0.5.
 
-### Getting Started
+## Files included in this repository
 
-1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
-    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)
-    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
-    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86.zip)
-    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86_64.zip)
-    
-    (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
+The code used to create, train and evaluate the agents:
 
-    (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux_NoVis.zip) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
+|File                                     |Description                                       |
+|:----------------------------------------|:-------------------------------------------------|
+|[Tennis.ipynb](Tennis.ipynb)             |Jupyter notebook to train and evaluate the agent  |
+|[ddpg_agent.py](ddpg_agent.py)           |Implementation of the DDPG agent                  |
+|[model.py](model.py)                     |Network architecture used by the DDPG agent       |
+|[ou_noise.py](ou_noise.py)               |Implemetation of the Ornstein-Uhlenbeck noise     |
+|[replay_buffer.py](replay_buffer.py)     |Replay buffer implementation                      |
+|[hyperparameters.py](hyperparameters.py) |Hyperparameter settings                           |
+|[drlnd.txt](drlnd.txt)                   |Conda environment file                            |
 
-2. Place the file in the DRLND GitHub repository, in the `p3_collab-compet/` folder, and unzip (or decompress) the file. 
+Documentation:
 
-### Instructions
+|File                                                         |Description                                                        |
+|:------------------------------------------------------------|:------------------------------------------------------------------|
+|[Report.md](Report.md)                                       |Description of the development process and the learning algorithm  |
+|README.md                                                    |This README.md file                                                |
 
-Follow the instructions in `Tennis.ipynb` to get started with training your own agent!  
+The trained models:
 
-### (Optional) Challenge: Crawler Environment
+|File                      |Description                              |
+|:-------------------------|:----------------------------------------|
+|model/agent_1_actor.pth   |Weights of the Actor Network of Agent 1  |
+|model/agent_1_critic.pth  |Weights of the Critic Network of Agent 1 |
+|model/agent_2_actor.pth   |Weights of the Actor Network of Agent 2  |
+|model/agent_2_critic.pth  |Weights of the Critic Network of Agent 2 |
 
-After you have successfully completed the project, you might like to solve the more difficult **Soccer** environment.
+## Environment Setup
 
-![Soccer][image2]
+This section describes how to get the code for this project and how to set up the environment.
 
-In this environment, the goal is to train a team of agents to play soccer.  
+### Getting the code
 
-You can read more about this environment in the ML-Agents GitHub [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#soccer-twos).  To solve this harder task, you'll need to download a new Unity environment.  (**Note**: Udacity students should not submit a project with this new environment.)
+First create a project directory and change to this directory.
 
-You need only select the environment that matches your operating system:
-- Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Soccer/Soccer_Linux.zip)
-- Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Soccer/Soccer.app.zip)
-- Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Soccer/Soccer_Windows_x86.zip)
-- Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Soccer/Soccer_Windows_x86_64.zip)
+Run the following command to clone this repository using GIT
 
-Then, place the file in the `p3_collab-compet/` folder in the DRLND GitHub repository, and unzip (or decompress) the file.  Next, open `Soccer.ipynb` and follow the instructions to learn how to use the Python API to control the agent.
+```
+$ git clone https://github.com/aboerzel/udacity-deep-reinforcement-learning-p3-collab-compet.git
+```
 
-(_For AWS_) If you'd like to train the agents on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Soccer/Soccer_Linux_NoVis.zip) to obtain the "headless" version of the environment.  You will **not** be able to watch the agents without enabling a virtual screen, but you will be able to train the agents.  (_To watch the agents, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
+### Create the environment
+The `drlnd.txt` file included in this repository describes all the packages required to set up a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) environment.
+If you haven't installed Conda, download the [Conda installer](https://www.anaconda.com/distribution/) and follow the [installation instructions](https://docs.anaconda.com/anaconda/install/).
+
+Run the following commands to create the environment, this will create an environment named `drlnd`.
+
+```
+$ conda create --name drlnd --file drlnd.txt
+$ conda activate drlnd  
+```
+
+## Train and evaluate the Agent
+
+Activate the `drlnd` environment and start the Jupyter Notebook server by running the commands below. A new browser tab will open with a list of the files in the current folder.
+
+```
+$ conda activate drlnd
+$ jupyter notebook
+```
+
+Click on the [Tennis.ipynb](Tennis.ipynb) notebook to open it.  
+
+![](./resources/jupyter_notebook_workspace.png)  
+
+First set the variable `os_name` according to your operating system before you run the notebook cells so that the appropriate Unity environment will be downloaded.
+
+Available options:
+
+* mac (Mac OSX)
+* windows_x86 (Windows 32-bit)
+* windows_x86_64 (Windows 64-bit)
+* linux_x86 (Linux 32-bit)
+* linux_x86_64 (Linux 64-bit) 
+
+![](./resources/choose_operating_system.png)
+
+Then execute the notebook cells one after the other with the key combination **SHIFT + ENTER**, starting with cell **1**.
+
+In order to evaluate the agents only with the pre-trained weights, the cells for the training can be skipped. 
+The cells for visualizing the network architecture can also be skipped. 
+Corresponding information can be found in the comments in the Jupiter Notebook.
+
