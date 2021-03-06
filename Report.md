@@ -81,7 +81,7 @@ these can be adjusted in the [hyperparameters.py](hyperparameters.py) file.
 ### Plot of Rewards
 This graph shows the rewards per episode within the training phase of the two agents, as well as the moving average score.  
 The agents were trained over a maximum of 10000 episodes up to the achievement of the target score +1.0 in order to ensure that the required score of +0.5 is definitely met. 
-As you can see, the target score of +1.0 was not reached within the 10000 episodes. The best score achieved over **100** consecutive episodes is **08.2**, this is above the required score of +0.5. 
+As you can see, the target score of +1.0 was not reached within the 10000 episodes. The best score achieved over **100** consecutive episodes is **0.82**, this is above the required score of +0.5. 
 The weights with which the highest score was achieved were saved. 
 
 ![](./resources/Training-Result.png)
